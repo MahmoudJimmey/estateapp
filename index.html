@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahmoud Gamal — Real Estate &amp; Digital Marketing</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H00CNT7T2T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H00CNT7T2T');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#121a1e;
+    --bg-2:#0c1215;
+    --panel:#1a252a;
+    --paper:#eaeee4;
+    --ink:#121a1e;
+    --brass:#c9903f;
+    --brass-dim:#a3722c;
+    --blue:#4f7ea3;
+    --steel:#8ea0a4;
+    --steel-line:rgba(142,160,164,.22);
+    --radius:2px;
+    --ease:cubic-bezier(.16,.8,.28,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Work Sans', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:linear-gradient(var(--steel-line) 1px, transparent 1px), linear-gradient(90deg, var(--steel-line) 1px, transparent 1px);
+    background-size:38px 38px;
+    background-attachment:fixed;
+  }
+  ::selection{background:var(--brass);color:var(--ink);}
+  a{color:inherit;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--brass);
+    display:inline-block;
+  }
+  h1,h2,h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    line-height:.98;
+    margin:0;
+    letter-spacing:.005em;
+  }
+  section{
+    position:relative;
+    padding:7vw 8vw;
+    max-width:1280px;
+    margin:0 auto;
+    background:var(--bg);
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  .strip{
+    height:10px;
+    width:100%;
+    background-image:repeating-linear-gradient(100deg, var(--steel-line) 0 10px, transparent 10px 26px);
+    opacity:.5;
+  }
+
+  /* ---------- fixed build gauge ---------- */
+  #build{
+    position:fixed;
+    top:16px; right:18px;
+    width:70px; height:96px;
+    z-index:50;
+    filter:drop-shadow(0 4px 14px rgba(0,0,0,.5));
+  }
+  #build .lbl{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:7px;
+    fill:var(--steel);
+    letter-spacing:.03em;
+  }
+  #build .floor{
+    fill:var(--steel-line);
+    transition:fill .15s linear;
+  }
+  #build .floor.on{fill:var(--brass);}
+  @media (max-width:640px){
+    #build{width:52px;height:76px; top:10px; right:10px;}
+  }
+
+  /* ---------- intro ---------- */
+  #intro{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6vw;
+    background:
+      radial-gradient(50% 50% at 50% 30%, rgba(201,144,63,.09), transparent 65%),
+      var(--bg-2);
+  }
+  #intro h1{
+    font-size:clamp(3rem, 9vw, 6.2rem);
+    color:var(--paper);
+    margin-top:1.1rem;
+  }
+  #intro .intro-sub{
+    font-size:1.15rem;
+    color:var(--steel);
+    max-width:34ch;
+    margin-top:1.4rem;
+    line-height:1.5;
+    font-family:'Work Sans', sans-serif;
+  }
+  #intro .scroll-cue{margin-top:3.6rem;}
+
+  /* ---------- hero ---------- */
+  #hero{
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:8vw;
+    padding-bottom:6vw;
+    background:
+      radial-gradient(60% 55% at 80% 15%, rgba(79,126,163,.12), transparent 60%),
+      radial-gradient(90% 70% at 10% 100%, rgba(201,144,63,.08), transparent 60%),
+      var(--bg-2);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.25fr .85fr;
+    gap:5vw;
+    align-items:center;
+    width:100%;
+  }
+  #hero h1{
+    font-size:clamp(2.2rem, 4.6vw, 3.9rem);
+    color:var(--paper);
+    margin-top:.5rem;
+  }
+  #hero h1 em{
+    font-style:normal;
+    color:var(--brass);
+  }
+  .hero-sub{
+    font-size:1.08rem;
+    color:var(--steel);
+    max-width:32ch;
+    margin-top:1.3rem;
+    line-height:1.55;
+    font-family:'Work Sans', sans-serif;
+  }
+  .hero-photo-wrap{
+    position:relative;
+    border:1px solid var(--steel-line);
+    padding:10px;
+    background:var(--panel);
+  }
+  .hero-photo-wrap img{
+    display:block;
+    width:100%;
+    filter:grayscale(.1) contrast(1.05);
+  }
+  .hero-photo-tag{
+    position:absolute;
+    bottom:22px; left:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.66rem;
+    letter-spacing:.08em;
+    background:rgba(12,18,21,.85);
+    color:var(--brass);
+    padding:.45em .7em;
+    border:1px solid var(--brass);
+  }
+  .scroll-cue{
+    margin-top:3rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    color:var(--steel);
+    display:flex;
+    align-items:center;
+    gap:.6em;
+    animation:bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+  /* ---------- story ---------- */
+  .story-grid{
+    display:grid;
+    grid-template-columns:1.3fr .9fr;
+    gap:5vw;
+    align-items:start;
+    margin-top:2rem;
+  }
+  #story h2{font-size:clamp(1.7rem,3.2vw,2.6rem); color:var(--paper);}
+  .story-copy{
+    font-size:1.06rem;
+    line-height:1.75;
+    color:#cbd3d2;
+    margin-top:1.5rem;
+    font-family:'Work Sans', sans-serif;
+  }
+  .spec-card{
+    background:var(--paper);
+    color:var(--ink);
+    padding:2rem 1.8rem;
+    border-radius:var(--radius);
+  }
+  .spec-card .eyebrow{color:var(--brass-dim);}
+  .spec-card .eyebrow::before{background:var(--brass-dim);}
+  .spec-row{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.85em 0;
+    border-bottom:1px solid rgba(18,26,30,.14);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+  }
+  .spec-row:last-child{border-bottom:none;}
+  .spec-row .k{color:rgba(18,26,30,.55); letter-spacing:.05em;}
+  .spec-row .v{text-align:right; max-width:60%; font-weight:600;}
+
+  /* ---------- five markers ---------- */
+  #markers{background:var(--bg-2);}
+  #markers .head{max-width:60ch; margin-top:1.3rem;}
+  #markers h2{font-size:clamp(1.7rem,3.2vw,2.6rem); color:var(--paper);}
+  #markers .head p{color:var(--steel); font-size:1rem; margin-top:.9rem; line-height:1.6; font-family:'Work Sans', sans-serif;}
+  .marker-cluster{
+    margin-top:3rem;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border:1px solid var(--steel-line);
+  }
+  .marker-card{
+    padding:1.9rem 1.3rem;
+    border-right:1px solid var(--steel-line);
+    transition:background .35s var(--ease);
+    background:var(--bg-2);
+  }
+  .marker-card:last-child{border-right:none;}
+  .marker-card:hover{background:rgba(201,144,63,.06);}
+  .marker-card svg{width:34px;height:34px; color:var(--brass);}
+  .marker-card h3{
+    font-size:1.02rem;
+    margin-top:1rem;
+    color:var(--paper);
+    letter-spacing:.01em;
+  }
+  .marker-card p{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.75rem;
+    line-height:1.6;
+    color:var(--steel);
+    margin-top:.75rem;
+  }
+  @media (max-width:980px){
+    .marker-cluster{grid-template-columns:repeat(2,1fr);}
+    .marker-card{border-bottom:1px solid var(--steel-line);}
+    .marker-card:nth-child(2n){border-right:none;}
+  }
+  @media (max-width:560px){
+    .marker-cluster{grid-template-columns:1fr;}
+  }
+
+  /* ---------- proof ---------- */
+  .proof-top{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4vw;
+    align-items:center;
+    margin-top:2rem;
+  }
+  #proof h2{font-size:clamp(1.7rem,3.2vw,2.6rem); color:var(--paper);}
+  .proof-copy{color:var(--steel); font-size:1rem; line-height:1.65; margin-top:1.1rem; font-family:'Work Sans', sans-serif;}
+  .proof-photo{
+    border:1px solid var(--steel-line);
+    padding:10px;
+    background:var(--panel);
+  }
+  .proof-photo img{width:100%; display:block; filter:grayscale(.1) contrast(1.05);}
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--steel-line);
+    margin-top:2.8rem;
+    border:1px solid var(--steel-line);
+  }
+  .stat{
+    background:var(--bg);
+    padding:1.7rem 1.3rem;
+  }
+  .stat .num{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:2.1rem;
+    color:var(--brass);
+  }
+  .stat .lbl{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.68rem;
+    color:var(--steel);
+    letter-spacing:.03em;
+    margin-top:.4rem;
+    line-height:1.5;
+  }
+  @media(max-width:768px){.stat-row{grid-template-columns:1fr;}}
+
+  .reel{
+    margin-top:3rem;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.3rem;
+  }
+  @media(max-width:640px){.reel{grid-template-columns:1fr;}}
+  .reel-card{
+    display:block;
+    text-decoration:none;
+    background:var(--panel);
+    border:1px solid var(--steel-line);
+    overflow:hidden;
+    transition:transform .3s var(--ease), border-color .3s var(--ease);
+  }
+  .reel-card:hover{transform:translateY(-4px); border-color:var(--brass);}
+  .reel-thumb{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#000;
+    overflow:hidden;
+  }
+  .reel-thumb img{width:100%;height:100%;object-fit:cover; display:block; opacity:.88;}
+  .reel-thumb .play{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .reel-thumb .play svg{width:38px;height:38px;color:var(--brass); filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));}
+  .reel-cap{
+    padding:.85rem 1.05rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    color:var(--steel);
+    letter-spacing:.02em;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .reel-cap span.tag{color:var(--brass);}
+
+  .more-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    margin-top:2rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+    color:var(--paper);
+    text-decoration:none;
+    border-bottom:1px solid var(--brass);
+    padding-bottom:2px;
+  }
+  .more-link:hover{color:var(--brass);}
+
+  /* ---------- cta ---------- */
+  #cta{
+    background:var(--bg-2);
+    text-align:center;
+    padding-top:7vw;
+    padding-bottom:8vw;
+  }
+  #cta .eyebrow{justify-content:center;}
+  #cta h2{
+    font-size:clamp(1.9rem,4.2vw,3rem);
+    color:var(--paper);
+    margin-top:1.1rem;
+    max-width:16ch;
+    margin-left:auto; margin-right:auto;
+  }
+  #cta .sub{
+    color:var(--steel);
+    max-width:46ch;
+    margin:1.2rem auto 0;
+    font-size:1rem;
+    line-height:1.6;
+    font-family:'Work Sans', sans-serif;
+  }
+  .cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-top:2.4rem;
+  }
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:1em 1.7em;
+    border:1px solid var(--brass);
+    color:var(--ink);
+    background:var(--brass);
+    transition:transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.ghost{
+    background:transparent;
+    color:var(--paper);
+    border-color:var(--steel-line);
+  }
+  .btn.ghost:hover{border-color:var(--brass); color:var(--brass);}
+  .signoff{
+    margin-top:3.2rem;
+    color:var(--steel);
+    font-size:.92rem;
+    font-style:italic;
+    font-family:'Work Sans', sans-serif;
+  }
+  footer{
+    padding:2.2rem 8vw;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.05em;
+    color:var(--steel);
+    max-width:1280px;
+    margin:0 auto;
+    background:var(--bg-2);
+  }
+
+  @media (max-width:860px){
+    section{padding:14vw 6vw;}
+    .hero-grid, .story-grid, .proof-top{grid-template-columns:1fr;}
+    .hero-photo-wrap{order:-1; max-width:280px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{transition:none; opacity:1; transform:none;}
+    .scroll-cue{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<svg id="build" viewBox="0 0 70 96" xmlns="http://www.w3.org/2000/svg">
+  <!-- crane -->
+  <path d="M12 8 H50 M12 8 V4 M40 8 L46 20" stroke="var(--steel)" stroke-width="1.3" fill="none"/>
+  <!-- 8 floor blocks, bottom to top -->
+  <rect class="floor" data-i="0" x="20" y="80" width="30" height="7"/>
+  <rect class="floor" data-i="1" x="20" y="71" width="30" height="7"/>
+  <rect class="floor" data-i="2" x="20" y="62" width="30" height="7"/>
+  <rect class="floor" data-i="3" x="20" y="53" width="30" height="7"/>
+  <rect class="floor" data-i="4" x="20" y="44" width="30" height="7"/>
+  <rect class="floor" data-i="5" x="20" y="35" width="30" height="7"/>
+  <rect class="floor" data-i="6" x="20" y="26" width="30" height="7"/>
+  <rect class="floor" data-i="7" x="20" y="17" width="30" height="7"/>
+  <text id="buildLabel" x="35" y="94" text-anchor="middle" class="lbl">BUILD</text>
+</svg>
+
+<main>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <p class="eyebrow reveal in">Real Estate &amp; Digital Marketing Specialist — Cairo, Egypt</p>
+    <h1 class="reveal in">Hi, I'm<br>Mahmoud.</h1>
+    <p class="intro-sub reveal in">This is my pitch, not my résumé. Give me two minutes.</p>
+    <p class="scroll-cue reveal in">↓ &nbsp;let's go</p>
+  </section>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow reveal">Real Estate &amp; Digital Marketing Specialist</p>
+        <h1 class="reveal">Started as an<br>engineer. Now I<br>sell what gets <em>built</em>.</h1>
+        <p class="hero-sub reveal">Scroll for the whole story, no cover letter required.</p>
+        <p class="scroll-cue">↓ &nbsp;laying the foundation</p>
+      </div>
+      <div class="hero-photo-wrap reveal">
+        <img src="data:image/jpeg;base64,__IMG_HERO__" alt="Mahmoud Gamal">
+        <span class="hero-photo-tag">MAHMOUD GAMAL</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip"></div>
+
+  <!-- STORY -->
+  <section id="story">
+    <p class="eyebrow reveal">The Route</p>
+    <h2 class="reveal">Engineer by degree.<br>Marketer by choice.</h2>
+    <div class="story-grid">
+      <p class="story-copy reveal">I studied civil engineering, then found marketing through sales — reading people before I ever read a floor plan's ROI. Now I run full-funnel campaigns for a real estate brand, turning what gets built into what gets sold.</p>
+      <div class="spec-card reveal">
+        <p class="eyebrow">Spec Sheet</p>
+        <div class="spec-row"><span class="k">ORIGIN</span><span class="v">B.Sc. Civil Engineering, Alexandria University</span></div>
+        <div class="spec-row"><span class="k">DETOUR</span><span class="v">Sales — before marketing made more sense</span></div>
+        <div class="spec-row"><span class="k">CURRENT GIG</span><span class="v">Sr. Digital Marketing Specialist, The Address Investments</span></div>
+        <div class="spec-row"><span class="k">BACKGROUND</span><span class="v">2 yrs real estate SEO/content, 190+ articles</span></div>
+        <div class="spec-row"><span class="k">MILEAGE</span><span class="v">3+ yrs full-funnel: paid, SEO, content, brand</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIVE MARKERS -->
+  <section id="markers">
+    <p class="eyebrow reveal">Site Survey</p>
+    <div class="head reveal">
+      <h2>Five reasons to<br>hire me</h2>
+      <p>Not five slide bullets — five things that are actually true about how I work.</p>
+    </div>
+    <div class="marker-cluster reveal">
+      <div class="marker-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18 L9 11 L13 14 L20 5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5 H20 V10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Skillful</h3>
+        <p>SEO, paid media, video, brand governance — already in my toolkit. Whatever's missing, I pick up fast.</p>
+      </div>
+      <div class="marker-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3 L18 6 L6 9 L18 12 L6 15 L18 18 L6 21" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Resilient</h3>
+        <p>Budgets get cut. Campaigns miss. I've been hit by all of it — and I'm still shipping.</p>
+      </div>
+      <div class="marker-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4L21 6l-3-3-3.3 3.3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Resourceful</h3>
+        <p>Engineering taught me to break problems into parts before solving them. I still work that way.</p>
+      </div>
+      <div class="marker-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21 L3 10 L12 3 L21 10 L21 21 Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21 V13 H15 V21" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Site-Literate</h3>
+        <p>I can read a floor plan and a site plan before I write the caption. Most marketers can't — I can.</p>
+      </div>
+      <div class="marker-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2 6 4-14 2 8h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Passionate</h3>
+        <p>I like marketing. I'd love marketing something I actually believe in — real estate, where I already have two years of hands-on experience, is exactly that.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip"></div>
+
+  <!-- PROOF -->
+  <section id="proof">
+    <p class="eyebrow reveal">On The Record</p>
+    <div class="proof-top">
+      <div class="reveal">
+        <h2>This isn't<br>theoretical.</h2>
+        <p class="proof-copy">Real numbers from real campaigns — lead generation, ad performance, and on-camera content I scripted and presented myself.</p>
+        <a class="more-link" href="https://mahmoudjimmey.github.io/Portofolio/" target="_blank" rel="noopener">See more of the work →</a>
+      </div>
+      <div class="proof-photo reveal">
+        <img src="data:image/jpeg;base64,__IMG_CONTENT__" alt="Mahmoud Gamal on set">
+      </div>
+    </div>
+
+    <div class="stat-row reveal">
+      <div class="stat"><div class="num">700+</div><div class="lbl">Qualified leads generated in a single month</div></div>
+      <div class="stat"><div class="num">1.45%</div><div class="lbl">Average Meta CTR — 60% above the Egypt benchmark</div></div>
+      <div class="stat"><div class="num">470K+</div><div class="lbl">Video plays in one month — on-camera real estate content</div></div>
+    </div>
+
+    <div class="reel reveal">
+      <a class="reel-card" href="https://youtube.com/shorts/XeYbJSETtAM?feature=share" target="_blank" rel="noopener">
+        <div class="reel-thumb">
+          <img src="https://img.youtube.com/vi/XeYbJSETtAM/hqdefault.jpg" alt="Real estate presenter video">
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="reel-cap"><span>Real estate — on-camera</span><span class="tag">YouTube ↗</span></div>
+      </a>
+      <a class="reel-card" href="https://youtube.com/shorts/DNqiElMj-U8?feature=share" target="_blank" rel="noopener">
+        <div class="reel-thumb">
+          <img src="https://img.youtube.com/vi/DNqiElMj-U8/hqdefault.jpg" alt="Real estate presenter video">
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="reel-cap"><span>Real estate — on-camera</span><span class="tag">YouTube ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <p class="eyebrow reveal">Topped Out</p>
+    <h2 class="reveal">If this sounds like the fit you're after, let's talk.</h2>
+    <p class="sub reveal">Prefer the classic route? The full résumé — titles, numbers, campaign metrics — is one click away.</p>
+    <div class="cta-buttons reveal">
+      <a class="btn" href="mailto:contact.mahmoudgamal@gmail.com">Email me</a>
+      <a class="btn ghost" href="tel:+201090113777">Call — 010 9011 3777</a>
+      <a class="btn ghost" id="cvLink" href="#" download="Mahmoud_Gamal_CV.pdf">Download résumé (PDF)</a>
+    </div>
+    <p class="signoff reveal">Thanks either way for the time it took to get this far. — Mahmoud</p>
+  </section>
+
+  <footer>
+    <span>MAHMOUD GAMAL · CAIRO, EGYPT</span>
+    <span>CONTACT.MAHMOUDGAMAL@GMAIL.COM · 010 9011 3777</span>
+  </footer>
+
+</main>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const floors = document.querySelectorAll('#build .floor');
+  const buildLabel = document.getElementById('buildLabel');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function updateBuild(){
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    const onCount = Math.round(pct * floors.length);
+    floors.forEach((f, i) => {
+      f.classList.toggle('on', i >= floors.length - onCount);
+    });
+    buildLabel.textContent = pct > 0.97 ? 'TOPPED OUT' : (onCount + '/' + floors.length);
+  }
+  document.addEventListener('scroll', ()=>{
+    if(reduced){ return; }
+    window.requestAnimationFrame(updateBuild);
+  }, {passive:true});
+  updateBuild();
+
+  document.getElementById('cvLink').href = 'data:application/pdf;base64,__CV_PDF__';
+</script>
+
+</body>
+</html>
